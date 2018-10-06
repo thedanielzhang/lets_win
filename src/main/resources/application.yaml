@@ -1,0 +1,3 @@
+spring:
+    data:
+      mongodb: mongodb+srv://admin:dannyz@cluster0-gmcst.mongodb.net/test?retryWrites=true
