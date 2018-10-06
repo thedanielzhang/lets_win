@@ -31,11 +31,15 @@ public class LandmarkService {
 		System.out.println(coordinates[0]);
 		System.out.println(coordinates[1]);
 		Point point = new Point(coordinates[0], coordinates[1]);
-	    MongoOperations mongoOps = new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(), "test"));
+	    MongoOperations mongoOps = new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(), "mydatabase"));
 
 		List<Landmark> landmarks = 
 				mongoOps.find(new Query(Criteria.where("location").near(point).maxDistance(100)), Landmark.class);
 		return landmarks.get(0);
+	}
+	
+	public Landmark createLandmark(Landmark landmark) {
+		return landmarkRepository.save(landmark);
 	}
 	
 	

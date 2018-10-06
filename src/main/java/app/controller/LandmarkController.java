@@ -6,6 +6,8 @@ import app.model.Landmark;
 import app.model.Location;
 import app.service.LandmarkService;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +34,18 @@ public class LandmarkController {
 		// Get landmark
 		float latitude = location.getLatitude();
 		float longitude = location.getLongitude();
-		float[] coordinates = {longitude, latitude};
+		float[] coordinates = {latitude, longitude};
 		Landmark landmark = landmarkService.getLandmarkByLocation(coordinates);
 		return landmark.customString();
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT) 
+	@ResponseStatus(HttpStatus.CREATED)
+	Landmark create(@RequestBody @Valid Landmark landmark) {
+		System.out.println("weare before create");
+		Landmark toReturn = this.landmarkService.createLandmark(landmark);
+		System.out.println("We are in create " + toReturn.customString());
+		return toReturn;
 	}
 	
 

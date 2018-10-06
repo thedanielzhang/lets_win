@@ -7,7 +7,7 @@ public class Landmark {
 	String name;
 	
 	private double[] location;
-	float radius;
+	//float radius;
 	String playlistId;
 	
 	@PersistenceConstructor
@@ -15,6 +15,10 @@ public class Landmark {
 	    super();
 	    this.name = name;
 	    this.location = location;
+	}
+	
+	Landmark() {
+		
 	}
 	
 	
@@ -46,12 +50,12 @@ public class Landmark {
 		return this.location;
 	}
 	
-	public float getRadius() {
-		return radius;
-	}
-	public void setRadius(float radius) {
-		this.radius = radius;
-	}
+//	public float getRadius() {
+//		return radius;
+//	}
+//	public void setRadius(float radius) {
+//		this.radius = radius;
+//	}
 	public String getPlaylistId() {
 		return playlistId;
 	}
